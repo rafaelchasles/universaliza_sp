@@ -33,6 +33,7 @@ def load_geojson(path):
     
     return gdf
 
+
 # Aplicação principal
 try:
     # Carregar os dados do GeoJSON
