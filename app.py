@@ -1,6 +1,6 @@
 import streamlit as st
-import folium
 from streamlit_folium import folium_static
+import folium
 import geopandas as gpd
 
 # Caminho para o arquivo GeoJSON
