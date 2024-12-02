@@ -5,7 +5,7 @@ import geopandas as gpd
 from folium.plugins import Fullscreen 
 
 
-st.set_page_config('wide')
+st.set_page_config(layout="wide")
 # Caminho para o arquivo GeoJSON
 mun_path = "data/mun_adesao2.geojson"
 logo_path = "data/logo.png"
@@ -44,20 +44,22 @@ try:
     folium.GeoJson(
         gdf,
         style_function=lambda feature: {
-            'fillColor': 'blue',  # Cor do preenchimento padrão
-            'color': 'blue',      # Cor da borda padrão
-            'weight': 2,          # Espessura da borda
-            'fillOpacity': 0.5    # Opacidade do preenchimento
+            'fillColor': 'blue',  
+            'color': 'blue',      
+            'weight': 2,     
+            'fillOpacity': 0.5    
         },
+
         highlight_function=lambda feature: {
-            'fillColor': 'red',  # Cor do preenchimento no hover
-            'color': 'red',      # Cor da borda no hover
-            'weight': 3,         # Espessura da borda no hover
-            'fillOpacity': 0.7   # Opacidade do preenchimento no hover
-        },
+            'fillColor': 'red',             
+            'color': 'red',                
+            'weight': 3,                     
+            'fillOpacity': 0.7           
+            },
+
         tooltip=folium.GeoJsonTooltip(
-            fields=['NOME'],  # Campos selecionados
-            aliases=['Nome:'],  # Aliases para hover
+            fields=['NOME'],  
+            aliases=['Nome:'],  
             localize=True
         ),
         popup=folium.GeoJsonPopup(
