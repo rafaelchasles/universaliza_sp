@@ -1,3 +1,5 @@
 streamlit
 folium
 geopandas
+folium.plugins
+streamlit_folium
