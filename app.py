@@ -2,9 +2,12 @@ import streamlit as st
 from streamlit_folium import folium_static
 import folium
 import geopandas as gpd
+from folium.plugins import Fullscreen 
 
+
+st.set_page_config('wide')
 # Caminho para o arquivo GeoJSON
-mun_path = "data/mun_adesao.geojson"
+mun_path = "data/mun_adesao2.geojson"
 logo_path = "data/logo.png"
 logo_univer_path = "data/logo_univers.png"
 
@@ -35,6 +38,8 @@ try:
     # Criar o mapa com folium
     m = folium.Map(location=[-22.245, -48.669], zoom_start=6.5, tiles='CartoDB positron')
 
+
+    Fullscreen(position='topright').add_to(m)
     # Adicionar os dados GeoJSON ao mapa com hover e popup
     folium.GeoJson(
         gdf,
@@ -56,8 +61,8 @@ try:
             localize=True
         ),
         popup=folium.GeoJsonPopup(
-            fields=['NOME', 'mun_adesao_UGRHI'],  # Campos no popup
-            aliases=['Nome:', 'UGRHI:'],  # Aliases para o popup
+            fields=['NOME', 'mun_adesao_UGRHI', 'mun_adesao_Data Adesão', 'mun_adesao_Populacao  Estimada', 'csvjson_Classificação Manancial', 'csvjson_Classificação Sistema Produtor', 'csvjson_Eficiência da Produção de Água', 'csvjson_Perdas', 'csvjson_Cobertura','csvjson_Eficiência da Distribuição de Água', 'csvjson_ISH-U', 'csvjson_População Urbana 2020', 'csvjson_População Urbana 2035', 'csvjson_Demanda Urbana 2020 (litros/s)', 'csvjson_Demanda Urbana 2035 (litros/s)', 'csvjson_Operador Oficial', 'csvjson_Tipo Operador', 'csvjson_Sistema(s) Produtor(es)', 'csvjson_Tipo Sistema(s)', 'csvjson_Manancial(is) de Abastecimento', 'csvjson_Tipo Manancial(is)', 'csvjson_URAE', 'csvjson_reg_administrativa', 'csvjson_reg_metropolitanas'],  # Campos no popup
+            aliases=['Nome: ', 'UGRHI: ', 'Data Adesão: ', 'População Estimada: ', 'Classificação Manancial: ', 'Classificação Sistema Produtor: ', 'Eficiência da Produção de Água: ', 'Perdas: ', 'Cobertura: ', 'Eficiência da Distribuição de Água:', 'ISH-U: ', 'População Urbana 2020: ', 'População Urbana 2035: ', 'Demanda Urbana 2020 (litros/s): ', 'Demanda Urbana 2035 (litros/s): ', 'Operador Oficial: ', 'Tipo Operador: ', 'Sistema(s) Produtor(es): ', 'Tipo Sistema(s): ', 'Manancial(is) de Abastecimento: ', 'Tipo Manancial(is): ', 'URAE: ', 'Região Administrativa: ', 'Região Metropolitana: '],  # Aliases para o popup
             localize=True
         )
     ).add_to(m)
